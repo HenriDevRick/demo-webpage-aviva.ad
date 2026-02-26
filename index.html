@@ -90,30 +90,6 @@
             .tabs-container { flex-direction: column; }
             .tab-btn { width: 100%; }
         }
-
-        .cors-info {
-            background-color: #e7f3ff;
-            border: 1px solid #b8daff;
-            color: #004085;
-            padding: 15px;
-            border-radius: 8px;
-            margin: 20px auto;
-            max-width: 900px;
-        }
-        .btn-cors {
-            background-color: #004b5c;
-            color: white;
-            padding: 8px 16px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            margin-top: 10px;
-            text-decoration: none;
-            display: inline-block;
-        }
-        .btn-cors:hover {
-            background-color: #003a47;
-        }
     </style>
 </head>
 <body>
@@ -143,21 +119,6 @@
     <section class="tabs-section" id="reserva">
         <div class="container">
             <h2 class="section-title">Autoatendimento</h2>
-            
-            <!-- Instruções CORS -->
-            <div class="cors-info" id="corsInstructions">
-                <h3>🔧 Configuração necessária para testes</h3>
-                <p>O servidor Pega requer uma extensão CORS no navegador. Siga os passos:</p>
-                <ol>
-                    <li><strong>Instale a extensão "CORS Unblock" no Chrome:</strong> 
-                        <a href="https://chrome.google.com/webstore/detail/cors-unblock/lfhmikememgdcahcdlaciloimbjjbofh" target="_blank">Clique aqui para instalar</a>
-                    </li>
-                    <li><strong>Ative a extensão</strong> (ícone fica verde)</li>
-                    <li><strong>Recarregue esta página</strong> (F5)</li>
-                </ol>
-                <p><small>Alternativa: Use Firefox com extensão "CORS Everywhere"</small></p>
-                <button class="btn-cors" onclick="document.getElementById('corsInstructions').style.display='none'">OK, entendi</button>
-            </div>
             
             <div class="tabs-container">
                 <button class="tab-btn active" onclick="switchTab(0)">Confirmação de Reserva</button>
