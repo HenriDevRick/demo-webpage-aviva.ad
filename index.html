@@ -180,7 +180,7 @@
             <div class="footer-grid">
                 <div class="footer-section"><h4>Aviva Resorts</h4><p>Multiplicando maneiras de fazer você feliz</p></div>
                 <div class="footer-section"><h4>Destinos</h4><ul><li><a href="#">Rio Quente</a></li><li><a href="#">Costa do Sauípe</a></li><li><a href="#">Hot Park</a></li></ul></div>
-                <div class="footer-section"><h4>Contato</h4><p>📞 0800 000 0000</p><p>✉️ contato@aviva.com.br</p><p>🌐 www.aviva.com.br</p></div>
+                <div class="footer-section"><h4>Contato</h4><p>📞 0800 000 0000</p><p>✉️ <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="dfbcb0b1abbeabb09fbea9b6a9bef1bcb0b2f1bdad">[email&#160;protected]</a></p><p>🌐 www.aviva.com.br</p></div>
                 <div class="footer-section"><h4>Redes Sociais</h4><ul><li><a href="#">Instagram</a></li><li><a href="#">Facebook</a></li><li><a href="#">YouTube</a></li></ul></div>
             </div>
             <div class="footer-bottom"><p>&copy; 2026 Aviva Resorts. Todos os direitos reservados.</p></div>
@@ -191,17 +191,17 @@
     =====================================================================
     ⚙️ CONFIGURAÇÃO DO PROXY
     Substitua TODAS as ocorrências de:
-        https://SEU-WORKER.SEU-USUARIO.workers.dev
+        https://demo-webpage-aviv-av3.henri-limas-200.workers.dev
     pela URL real do seu Cloudflare Worker após o deploy.
     =====================================================================
     -->
 
     <!-- ✅ Script carregado via proxy (resolve CORS) -->
-    <script src="https://SEU-WORKER.SEU-USUARIO.workers.dev/prweb/PRRestService/c11nsvc/v1/pega-embed.js"></script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://demo-webpage-aviv-av3.henri-limas-200.workers.dev/prweb/PRRestService/c11nsvc/v1/pega-embed.js"></script>
 
     <script>
         // URL do Cloudflare Worker — altere aqui quando tiver a URL real
-        var PROXY_URL = 'https://SEU-WORKER.SEU-USUARIO.workers.dev';
+        var PROXY_URL = 'https://demo-webpage-aviv-av3.henri-limas-200.workers.dev';
 
         var tabs = [
             {
@@ -237,13 +237,4 @@
             // ✅ Aponta para o proxy em vez do servidor Pega diretamente
             el.setAttribute('pegaServerUrl', PROXY_URL + '/prweb/');
 
-            el.setAttribute('grantType', 'customBearer');
-            el.setAttribute('clientId', tabs[index].clientId);
-            el.style.width = '100%';
-            container.appendChild(el);
-        };
-
-        window.switchTab(0);
-    </script>
-</body>
-</html>
+            el.setAttribute('grantTyp
