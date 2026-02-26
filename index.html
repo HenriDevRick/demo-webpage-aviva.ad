@@ -187,13 +187,35 @@
         </div>
     </footer>
 
-    <!-- Script usando servidor direto -->
-    <script src="https://adqura02.pegalabs.io/prweb/PRRestService/c11nsvc/v1/pega-embed.js"></script>
+    <!--
+    =====================================================================
+    ⚙️ CONFIGURAÇÃO DO PROXY
+    Substitua TODAS as ocorrências de:
+        https://SEU-WORKER.SEU-USUARIO.workers.dev
+    pela URL real do seu Cloudflare Worker após o deploy.
+    =====================================================================
+    -->
+
+    <!-- ✅ Script carregado via proxy (resolve CORS) -->
+    <script src="https://SEU-WORKER.SEU-USUARIO.workers.dev/prweb/PRRestService/c11nsvc/v1/pega-embed.js"></script>
+
     <script>
+        // URL do Cloudflare Worker — altere aqui quando tiver a URL real
+        var PROXY_URL = 'https://SEU-WORKER.SEU-USUARIO.workers.dev';
+
         var tabs = [
-            { caseTypeID: 'Aviva-Experience-Work-BookingConfirmation', clientId: '12444249209306947994' },
-            { caseTypeID: 'Aviva-Experience-Work-CheckinDigital', clientId: '55966357118681751596' },
-            { caseTypeID: 'Aviva-Experience-Work-CheckoutDigital', clientId: '13673903982745833564' }
+            {
+                caseTypeID: 'Aviva-Experience-Work-BookingConfirmation',
+                clientId: '12444249209306947994'
+            },
+            {
+                caseTypeID: 'Aviva-Experience-Work-CheckinDigital',
+                clientId: '55966357118681751596'
+            },
+            {
+                caseTypeID: 'Aviva-Experience-Work-CheckoutDigital',
+                clientId: '13673903982745833564'
+            }
         ];
 
         window.switchTab = function(index) {
@@ -211,7 +233,10 @@
             el.setAttribute('casePage', 'assignment');
             el.setAttribute('assignmentHeader', 'false');
             el.setAttribute('appAlias', 'aviva--experincia-do-hspede-1');
-            el.setAttribute('pegaServerUrl', 'https://adqura02.pegalabs.io/prweb/');
+
+            // ✅ Aponta para o proxy em vez do servidor Pega diretamente
+            el.setAttribute('pegaServerUrl', PROXY_URL + '/prweb/');
+
             el.setAttribute('grantType', 'customBearer');
             el.setAttribute('clientId', tabs[index].clientId);
             el.style.width = '100%';
