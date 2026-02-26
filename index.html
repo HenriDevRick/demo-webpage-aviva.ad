@@ -242,8 +242,8 @@
         </div>
     </footer>
 
-    <!-- Script principal do Pega Embed - servidor original -->
-    <script src="https://adqura02.pegalabs.io/prweb/PRRestService/c11nsvc/v1/pega-embed.js"></script>
+    <!-- Usando o servidor Vercel como proxy -->
+    <script src="https://pega-proxy.vercel.app/prweb/PRRestService/c11nsvc/v1/pega-embed.js"></script>
     <script>
         var tabs = [
             {
@@ -261,15 +261,12 @@
         ];
 
         function switchTab(index) {
-            // Atualizar botões ativos
             document.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); });
             document.querySelectorAll('.tab-btn')[index].classList.add('active');
 
-            // Limpar container
             var container = document.getElementById('pega-container');
             container.innerHTML = '';
 
-            // Criar novo elemento pega-embed
             var el = document.createElement('pega-embed');
             el.setAttribute('id', 'theEmbed');
             el.setAttribute('action', 'createCase');
@@ -278,22 +275,36 @@
             el.setAttribute('casePage', 'assignment');
             el.setAttribute('assignmentHeader', 'false');
             el.setAttribute('appAlias', 'aviva--experincia-do-hspede-1');
-            // Usando o servidor original
-            el.setAttribute('pegaServerUrl', 'https://adqura02.pegalabs.io/prweb/');
+            // Usando o proxy Vercel
+            el.setAttribute('pegaServerUrl', 'https://pega-proxy.vercel.app/prweb/');
             el.setAttribute('grantType', 'customBearer');
             el.setAttribute('clientId', tabs[index].clientId);
-            el.style.width = '100%';
             
+            // Configurações adicionais para CORS
+            el.setAttribute('withCredentials', 'false');
+            
+            el.style.width = '100%';
             container.appendChild(el);
             
-            console.log('Web embed carregado para:', tabs[index].caseTypeID);
+            console.log('Tentando carregar:', tabs[index].caseTypeID);
         }
 
-        // Carregar a primeira aba quando a página carregar
         window.addEventListener('DOMContentLoaded', function() { 
             switchTab(0); 
         });
     </script>
+
+    <!-- Mensagem de ajuda -->
+    <div style="position: fixed; bottom: 20px; right: 20px; background: #004b5c; color: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.2); z-index: 1000; max-width: 300px;">
+        <p style="margin-bottom: 10px;"><strong>🔧 Diagnóstico</strong></p>
+        <p style="font-size: 14px; margin-bottom: 10px;">Se as telas não aparecerem, verifique:</p>
+        <ul style="font-size: 12px; margin-left: 20px;">
+            <li>O arquivo .nojekyll existe no repositório</li>
+            <li>O proxy Vercel está configurado com vercel.json</li>
+            <li>URL do proxy: https://pega-proxy.vercel.app</li>
+        </ul>
+        <button onclick="this.parentElement.style.display='none'" style="position: absolute; top: 5px; right: 5px; background: none; border: none; color: white; cursor: pointer; font-size: 16px;">×</button>
+    </div>
 
 </body>
 </html>
