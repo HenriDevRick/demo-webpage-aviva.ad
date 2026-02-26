@@ -7,6 +7,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Meta tag para ajudar com CORS -->
+    <meta http-equiv="Content-Security-Policy" content="default-src *; script-src * 'unsafe-inline' 'unsafe-eval'; connect-src *; img-src * data:; style-src * 'unsafe-inline';">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Poppins', sans-serif; color: #004b5c; line-height: 1.6; }
@@ -242,7 +244,7 @@
         </div>
     </footer>
 
-    <!-- Script Pega Embed - Atualizado para adqura02.pegalabs.io -->
+    <!-- Script Pega Embed - Versão corrigida com Solução 2 -->
     <script src="https://adqura02.pegalabs.io/prweb/PRRestService/c11nsvc/v1/pega-embed.js"></script>
     <script>
         var tabs = [
@@ -260,13 +262,12 @@
             }
         ];
 
-        function switchTab(index) {
-            document.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); });
-            document.querySelectorAll('.tab-btn')[index].classList.add('active');
-
+        // Função para adicionar headers CORS manualmente via fetch
+        function createPegaEmbedWithCORS(index) {
             var container = document.getElementById('pega-container');
             container.innerHTML = '';
 
+            // Criar elemento pega-embed
             var el = document.createElement('pega-embed');
             el.setAttribute('id', 'theEmbed');
             el.setAttribute('action', 'createCase');
@@ -275,15 +276,66 @@
             el.setAttribute('casePage', 'assignment');
             el.setAttribute('assignmentHeader', 'false');
             el.setAttribute('appAlias', 'aviva--experincia-do-hspede-1');
-            // Atualizado para o novo servidor
+            // Forçar o servidor correto
             el.setAttribute('pegaServerUrl', 'https://adqura02.pegalabs.io/prweb/');
             el.setAttribute('grantType', 'customBearer');
             el.setAttribute('clientId', tabs[index].clientId);
+            
+            // Configurações adicionais para CORS
+            el.setAttribute('withCredentials', 'false');
+            el.setAttribute('cors-enabled', 'true');
+            
             el.style.width = '100%';
             container.appendChild(el);
+
+            // Tentar configurar o embed após carregar
+            setTimeout(function() {
+                if (window.PegaEmbed && window.PegaEmbed.configure) {
+                    window.PegaEmbed.configure({
+                        cors: {
+                            enabled: true,
+                            credentials: false
+                        }
+                    });
+                }
+            }, 1000);
         }
 
-        window.addEventListener('DOMContentLoaded', function() { switchTab(0); });
+        function switchTab(index) {
+            document.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); });
+            document.querySelectorAll('.tab-btn')[index].classList.add('active');
+            
+            // Usar a função melhorada
+            createPegaEmbedWithCORS(index);
+        }
+
+        // Configuração global para o Pega Embed
+        window.PEGA_EMBED_CONFIG = {
+            corsEnabled: true,
+            withCredentials: false,
+            serverUrl: 'https://adqura02.pegalabs.io/prweb/'
+        };
+
+        window.addEventListener('DOMContentLoaded', function() { 
+            switchTab(0); 
+        });
+    </script>
+
+    <!-- Script adicional para tentar contornar CORS -->
+    <script>
+        // Interceptar chamadas fetch para adicionar headers CORS
+        const originalFetch = window.fetch;
+        window.fetch = function(url, options = {}) {
+            if (typeof url === 'string' && url.includes('adqura02.pegalabs.io')) {
+                options.mode = 'cors';
+                options.credentials = 'omit';
+                options.headers = {
+                    ...options.headers,
+                    'Origin': window.location.origin
+                };
+            }
+            return originalFetch(url, options);
+        };
     </script>
 
 </body>
