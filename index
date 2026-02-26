@@ -8,92 +8,358 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Poppins', sans-serif; color: #004b5c; line-height: 1.6; }
-        h1,h2,h3,h4,h5,h6 { font-family: 'Playfair Display', serif; font-weight: 700; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-
-        header { background-color: white; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 50; }
-        .header-content { display: flex; justify-content: space-between; align-items: center; padding: 20px 0; }
-        .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: #004b5c; }
-        .logo-img { height: 50px; width: auto; }
-        nav a { margin-left: 30px; text-decoration: none; color: #004b5c; font-weight: 500; transition: color 0.3s; }
-        nav a:hover { color: #0093d1; }
-
-        .hero {
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
-                url('https://private-us-east-1.manuscdn.com/sessionFile/MJbIllU8XkkduAFoEBZFB3/sandbox/YnijnZb1YqlBwd0wHWkjdu-img-1_1771957486000_na1fn_YXZpdmEtaGVyby1wb29s.png?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80&Expires=1798761600&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvTUpiSWxsVThYa2tkdUFGb0VCWkZCMy9zYW5kYm94L1luaWpuWmIxWXFsQndkMHdIV2tqZHUtaW1nLTFfMTc3MTk1NzQ4NjAwMF9uYTFmbl9ZWFpwZG1FdGFHVnlieTF3YjI5cy5wbmc~eC1vc3MtcHJvY2Vzcz1pbWFnZS9yZXNpemUsd18xOTIwLGhfMTkyMC9mb3JtYXQsd2VicC9xdWFsaXR5LHFfODAiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE3OTg3NjE2MDB9fX1dfQ__&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=SgldAU1OUterLIwlRNHppDkOhK9n01isXYmrq04NQNw5o2mYLdjnjnimWPtfM5OqJLXzkPtblJfqGnEaGmagGt~SyYnUtqJ7z8f-Z2asvt-x7zWjaP-58-xbSjaJfVkYQAk5VBwyyD7MuzDfTZKPwkVl5mWGT2XKsp3QUHunJdkMAhbX7Kt~SltSjZE6Z-EQPgQ68t3Pw4zzDKiMTPB0K-~9AQ8aAeVy35fMVxpBH~0AKL~8xNhBYwgQOdV9Vb9PbXfwhGDhy145C-8mZSpm4-Gqa~tjjhSggGss5sNax-IyIuY5jr6flQaP3EE5r0nTxbU7G~NcZzeGxlRavK1k-Q__');
-            background-size: cover; background-position: center 40%;
-            height: 320px; display: flex; align-items: center; justify-content: center;
-            text-align: center; color: white;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        .hero-content h1 { font-size: 36px; margin-bottom: 12px; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
-        .hero-content p  { font-size: 16px; margin-bottom: 20px; text-shadow: 1px 1px 2px rgba(0,0,0,0.3); }
 
-        .btn { display: inline-block; padding: 15px 40px; background-color: #c6d900; color: #004b5c;
-                text-decoration: none; border-radius: 8px; font-weight: 600; transition: all 0.3s;
-                border: none; cursor: pointer; font-size: 16px; }
-        .btn:hover { background-color: #b8c800; box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: #004b5c;
+            line-height: 1.6;
+        }
 
-        .tabs-section { background-color: white; padding: 80px 0; }
-        .tabs-container { display: flex; gap: 10px; margin-bottom: 40px; justify-content: center; flex-wrap: wrap; }
-        .tab-btn { padding: 12px 30px; background-color: #f0f0f0; color: #004b5c;
-                   border: 2px solid transparent; border-radius: 8px; cursor: pointer;
-                   font-weight: 600; transition: all 0.3s; font-size: 16px; }
-        .tab-btn:hover { background-color: #e0e0e0; }
-        .tab-btn.active { background-color: #c6d900; color: #004b5c; border-color: #004b5c; }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
 
-        .pega-container { background: white; border-radius: 12px; box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-                          overflow: hidden; max-width: 900px; margin: 0 auto; min-height: 600px; }
-        pega-embed { display: block; width: 100%; min-height: 600px; }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
 
-        .section-title { text-align: center; font-size: 42px; margin-bottom: 50px; color: #004b5c; }
+        /* Header */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
 
-        .destinos { background-color: white; padding: 80px 0; }
-        .destinos-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .card { background: white; border-radius: 12px; overflow: hidden;
-                box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: transform 0.3s, box-shadow 0.3s; }
-        .card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.15); }
-        .card img { width: 100%; height: 250px; object-fit: cover; }
-        .card-content { padding: 25px; }
-        .card-content h3 { font-size: 24px; margin-bottom: 15px; color: #004b5c; }
-        .card-content p  { color: #666; margin-bottom: 20px; }
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
 
-        .experiencias { background-color: #004b5c; color: white; padding: 80px 0; }
-        .experiencias .section-title { color: white; }
-        .experiencias-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; }
-        .exp-card { background-color: #0a6b7f; padding: 30px; border-radius: 12px;
-                    text-align: center; transition: background-color 0.3s; }
-        .exp-card:hover { background-color: #0d7d94; }
-        .exp-icon { font-size: 48px; margin-bottom: 15px; }
-        .exp-card h4 { font-size: 20px; margin-bottom: 10px; }
-        .exp-card p  { font-size: 14px; color: #ddd; }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: #004b5c;
+        }
 
-        .cta { background-color: #004b5c; color: white; padding: 60px 0; text-align: center; }
-        .cta h3 { font-size: 36px; margin-bottom: 20px; }
-        .cta p  { font-size: 18px; margin-bottom: 30px; }
+        .logo-img {
+            height: 50px;
+            width: auto;
+        }
 
-        footer { background-color: #003a47; color: white; padding: 50px 0 20px; }
-        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; margin-bottom: 30px; }
-        .footer-section h4 { margin-bottom: 15px; font-size: 18px; }
-        .footer-section p, .footer-section li { color: #ccc; font-size: 14px; margin-bottom: 8px; }
-        .footer-section ul { list-style: none; }
-        .footer-section a { color: #c6d900; text-decoration: none; transition: color 0.3s; }
-        .footer-section a:hover { color: #b8c800; }
-        .footer-bottom { border-top: 1px solid #0a6b7f; padding-top: 20px; text-align: center; color: #999; font-size: 14px; }
+        nav a {
+            margin-left: 30px;
+            text-decoration: none;
+            color: #004b5c;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
 
+        nav a:hover {
+            color: #0093d1;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://private-us-east-1.manuscdn.com/sessionFile/MJbIllU8XkkduAFoEBZFB3/sandbox/YnijnZb1YqlBwd0wHWkjdu-img-1_1771957486000_na1fn_YXZpdmEtaGVyby1wb29s.png?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80&Expires=1798761600&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvTUpiSWxsVThYa2tkdUFGb0VCWkZCMy9zYW5kYm94L1luaWpuWmIxWXFsQndkMHdIV2tqZHUtaW1nLTFfMTc3MTk1NzQ4NjAwMF9uYTFmbl9ZWFpwZG1FdGFHVnlieTF3YjI5cy5wbmc~eC1vc3MtcHJvY2Vzcz1pbWFnZS9yZXNpemUsd18xOTIwLGhfMTkyMC9mb3JtYXQsd2VicC9xdWFsaXR5LHFfODAiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE3OTg3NjE2MDB9fX1dfQ__&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=SgldAU1OUterLIwlRNHppDkOhK9n01isXYmrq04NQNw5o2mYLdjnjnimWPtfM5OqJLXzkPtblJfqGnEaGmagGt~SyYnUtqJ7z8f-Z2asvt-x7zWjaP-58-xbSjaJfVkYQAk5VBwyyD7MuzDfTZKPwkVl5mWGT2XKsp3QUHunJdkMAhbX7Kt~SltSjZE6Z-EQPgQ68t3Pw4zzDKiMTPB0K-~9AQ8aAeVy35fMVxpBH~0AKL~8xNhBYwgQOdV9Vb9PbXfwhGDhy145C-8mZSpm4-Gqa~tjjhSggGss5sNax-IyIuY5jr6flQaP3EE5r0nTxbU7G~NcZzeGxlRavK1k-Q__');
+            background-size: cover;
+            background-position: center;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-content h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-content p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 40px;
+            background-color: #c6d900;
+            color: #004b5c;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .btn:hover {
+            background-color: #b8c800;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Destinos Section */
+        .destinos {
+            background-color: white;
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 42px;
+            margin-bottom: 50px;
+            color: #004b5c;
+        }
+
+        .destinos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 25px;
+        }
+
+        .card-content h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #004b5c;
+        }
+
+        .card-content p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        /* Experiências Section */
+        .experiencias {
+            background-color: #004b5c;
+            color: white;
+            padding: 80px 0;
+        }
+
+        .experiencias .section-title {
+            color: white;
+        }
+
+        .experiencias-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .exp-card {
+            background-color: #0a6b7f;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            transition: background-color 0.3s;
+        }
+
+        .exp-card:hover {
+            background-color: #0d7d94;
+        }
+
+        .exp-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+
+        .exp-card h4 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .exp-card p {
+            font-size: 14px;
+            color: #ddd;
+        }
+
+        /* Tabs Section */
+        .tabs-section {
+            background-color: white;
+            padding: 80px 0;
+        }
+
+        .tabs-container {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 40px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            padding: 12px 30px;
+            background-color: #f0f0f0;
+            color: #004b5c;
+            border: 2px solid transparent;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            font-size: 16px;
+        }
+
+        .tab-btn:hover {
+            background-color: #e0e0e0;
+        }
+
+        .tab-btn.active {
+            background-color: #c6d900;
+            color: #004b5c;
+            border-color: #004b5c;
+        }
+
+        /* Pega Embed Container */
+        .pega-container {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            max-width: 900px;
+            margin: 0 auto;
+            min-height: 600px;
+        }
+
+        pega-embed {
+            display: block;
+            width: 100%;
+            min-height: 600px;
+        }
+
+        /* CTA Section */
+        .cta {
+            background-color: #004b5c;
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .cta h3 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .cta p {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #003a47;
+            color: white;
+            padding: 50px 0 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .footer-section p, .footer-section li {
+            color: #ccc;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section a {
+            color: #c6d900;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: #b8c800;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #0a6b7f;
+            padding-top: 20px;
+            text-align: center;
+            color: #999;
+            font-size: 14px;
+        }
+
+        /* Responsive */
         @media (max-width: 768px) {
-            nav { display: none; }
-            .hero-content h1 { font-size: 26px; }
-            .section-title { font-size: 32px; }
-            .destinos-grid, .experiencias-grid { grid-template-columns: 1fr; }
-            .tabs-container { flex-direction: column; }
-            .tab-btn { width: 100%; }
+            nav {
+                display: none;
+            }
+
+            .hero-content h1 {
+                font-size: 32px;
+            }
+
+            .section-title {
+                font-size: 32px;
+            }
+
+            .destinos-grid, .experiencias-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .tabs-container {
+                flex-direction: column;
+            }
+
+            .tab-btn {
+                width: 100%;
+            }
         }
     </style>
 </head>
 <body>
-
     <!-- Header -->
     <header>
         <div class="container">
@@ -102,33 +368,20 @@
                     <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310419663030535648/kjcChvtIhqfiojcv.png" alt="Aviva Resorts" class="logo-img">
                 </a>
                 <nav>
-                    <a href="#reserva">Autoatendimento</a>
                     <a href="#destinos">Destinos</a>
                     <a href="#experiencias">Experiências</a>
+                    <a href="#reserva">Serviços</a>
                 </nav>
             </div>
         </div>
     </header>
 
-    <!-- Hero -->
+    <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
             <h1>Multiplicando Maneiras de Fazer Você Feliz</h1>
             <p>Experiências inesquecíveis em resorts de luxo integrados à natureza brasileira</p>
             <a href="#reserva" class="btn">Reserve Agora</a>
-        </div>
-    </section>
-
-    <!-- Autoatendimento -->
-    <section class="tabs-section" id="reserva">
-        <div class="container">
-            <h2 class="section-title">Autoatendimento</h2>
-            <div class="tabs-container">
-                <button class="tab-btn active" onclick="switchTab(0)">Confirmação de Reserva</button>
-                <button class="tab-btn" onclick="switchTab(1)">Check-in</button>
-                <button class="tab-btn" onclick="switchTab(2)">Check-out</button>
-            </div>
-            <div class="pega-container" id="pega-container"></div>
         </div>
     </section>
 
@@ -145,8 +398,9 @@
                         <button class="btn">Explorar</button>
                     </div>
                 </div>
+
                 <div class="card">
-                    <img src="https://private-us-east-1.manuscdn.com/sessionFile/MJbIllU8XkkduAFoEBZFB3/sandbox/YnijnZb1YqlBwd0wHWkjdu-img-4_1771957499000_na1fn_YXZpdmEtcmVzb3J0LWFlcmlhbA.png?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80&Expires=1798761600&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvTUpiSWxsVThYa2tkdUFGb0VCWkZCMy9zYW5kYm94L1luaWpuWmIxWXFsQndkMHdIV2tqZHUtaW1nLTRfMTc3MTk1NzQ5OTAwMF9uYTFmbl9ZWFpwZG1FdGNtVnpiM0owTFdGbGNtbGhiQS5wbmc~eC1vc3MtcHJvY2Vzcz1pbWFnZS9yZXNpemUsd18xOTIwLGhfMTkyMC9mb3JtYXQsd2VicC9xdWFsaXR5LHFfODAiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE3OTg3NjE2MDB9fX1dfQ__&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=RONjJ5EtMM1ZQb8B-Wk-3-h3VzB5YOdtUiApig7dk44rCxcDyUj~46ILqEX08L0rIZ0-aTRZUGseDnGbP6uy5xpk61iFTX3Jp0igrX-QsU~8NSEnI3cKUqwacu9CUbaLEp5zUQ8fQ2o2h4NYHSTXsbT1RPo2TZg3Kzs-Mlhv9Xj-ccCOjLCSbySyLZ77cnPb6lMlHzgromc7KAOiCWQptqKvWhHft~rr90QTydjDGmzmUKg1MJavTHd8fi1HG14N9LV6rciSukpdrLN~FyLlvw03ITZsXnmnGTieBW~BjLxtDQpOrUayD4saQZLO7o2IRWVi9TEhD6Dw4m-oUMOXWw__" alt="Costa do Sauipe">
+                    <img src="https://private-us-east-1.manuscdn.com/sessionFile/MJbIllU8XkkduAFoEBZFB3/sandbox/YnijnZb1YqlBwd0wHWkjdu-img-4_1771957499000_na1fn_YXZpdmEtcmVzb3J0LWFlcmlhbA.png?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80&Expires=1798761600&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvTUpiSWxsVThYa2tkdUFGb0VCWkZCMy9zYW5kYm94L1luaWpuWmIxWXFsQndkMHdIV2tqZHUtaW1nLTRfMTc3MTk1NzQ5OTAwMF9uYTFmbl9ZWFpwZG1FdGNtVnpiM0owTFdGbGNtbGhiQS5wbmc~eC1vc3MtcHJvY2Vzcz1pbWFnZS9yZXNpemUsd18xOTIwLGhfMTkyMC9mb3JtYXQsd2VicC9xdWFsaXR5LHFfODAiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE3OTg3NjE2MDB9fX1dfQ__&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=RONjJ5EtMM1ZQb8B-Wk-3-h3VzB5YOdtUiApig7dk44rCxcDyUj~46ILqEX08L0rIZ0-aTRZUGseDnGbP6uy5xpk61iFTX3Jp0igrX-QsU~8NSEnI3cKUqwacu9CUbaLEp5zUQ8fQ2o2h4NYHSTXsbT1RPo2TZg3Kzs-Mlhv9Xj-ccCOjLCSbySyLZ77cnPb6lMlHzgromc7KAOiCWQptqKvWhHft~rr90QTydjDGmzmUKg1MJavTHd8fi1HG14N9LV6rciSukpdrLN~FyLlvw03ITZsXnmnGTieBW~BjLxtDQpOrUayD4saQZLO7o2IRWVi9TEhD6Dw4m-oUMOXWw__" alt="Costa do Sauípe">
                     <div class="card-content">
                         <h3>Costa do Sauípe</h3>
                         <p>Praia paradisíaca na Bahia com resorts all-inclusive, natureza exuberante e experiências inesquecíveis.</p>
@@ -157,7 +411,7 @@
         </div>
     </section>
 
-    <!-- Experiencias -->
+    <!-- Experiências -->
     <section class="experiencias" id="experiencias">
         <div class="container">
             <h2 class="section-title">Experiências Incríveis</h2>
@@ -196,6 +450,21 @@
         </div>
     </section>
 
+    <!-- Serviços com Pega Embed -->
+    <section class="tabs-section" id="reserva">
+        <div class="container">
+            <h2 class="section-title">Nossos Serviços</h2>
+            
+            <div class="tabs-container">
+                <button class="tab-btn active" onclick="switchTab(0)">Confirmação de Reserva</button>
+                <button class="tab-btn" onclick="switchTab(1)">Check-in</button>
+                <button class="tab-btn" onclick="switchTab(2)">Check-out</button>
+            </div>
+
+            <div class="pega-container" id="pega-container"></div>
+        </div>
+    </section>
+
     <!-- CTA -->
     <section class="cta">
         <div class="container">
@@ -224,7 +493,7 @@
                 <div class="footer-section">
                     <h4>Contato</h4>
                     <p>📞 0800 000 0000</p>
-                    <p>✉️ contato@aviva.com.br</p>
+                    <p>✉️ <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="aedccbddcbdcd8cfddeecfd8c7d8cf80cdc1c380ccdc">[email&#160;protected]</a></p>
                     <p>🌐 www.aviva.com.br</p>
                 </div>
                 <div class="footer-section">
@@ -242,22 +511,16 @@
         </div>
     </footer>
 
-    <script src='https://reguv.pegatsdemo.com/prweb/PRRestService/c11nsvc/v1/pega-embed.js'></script>
+    <script src="https://pega-proxy.vercel.app/prweb/PRRestService/c11nsvc/v1/pega-embed.js"></script>
     <script>
         var tabs = [
-            {
-                caseTypeID: 'Aviva-Experience-Work-BookingConfirmation',
-                clientId: '12444249209306947994'
-            },
-            {
-                caseTypeID: 'Aviva-Experience-Work-CheckinDigital',
-                clientId: '55966357118681751596'
-            },
-            {
-                caseTypeID: 'Aviva-Experience-Work-CheckoutDigital',
-                clientId: '13673903982745833564'
-            }
+            { caseTypeID: 'Aviva-Experience-Work-BookingConfirmation', clientId: '12444249209306947994' },
+            { caseTypeID: 'Aviva-Experience-Work-CheckinDigital',      clientId: '55966357118681751596' },
+            { caseTypeID: 'Aviva-Experience-Work-CheckoutDigital',     clientId: '13673903982745833564' }
         ];
+
+        var PEGA_SERVER = 'https://pega-proxy.vercel.app/prweb/';
+        var PEGA_SCRIPT = 'https://pega-proxy.vercel.app/prweb/PRRestService/c11nsvc/v1/pega-embed.js';
 
         function switchTab(index) {
             document.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); });
@@ -274,7 +537,7 @@
             el.setAttribute('casePage', 'assignment');
             el.setAttribute('assignmentHeader', 'false');
             el.setAttribute('appAlias', 'aviva--experincia-do-hspede-1');
-            el.setAttribute('pegaServerUrl', 'https://reguv.pegatsdemo.com/prweb/');
+            el.setAttribute('pegaServerUrl', 'https://pega-proxy.vercel.app/prweb/');
             el.setAttribute('grantType', 'customBearer');
             el.setAttribute('clientId', tabs[index].clientId);
             el.style.width = '100%';
@@ -283,6 +546,5 @@
 
         window.addEventListener('DOMContentLoaded', function() { switchTab(0); });
     </script>
-
 </body>
 </html>
