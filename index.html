@@ -90,6 +90,45 @@
             .tabs-container { flex-direction: column; }
             .tab-btn { width: 100%; }
         }
+
+        /* Estilo para o aviso de CORS */
+        .cors-warning {
+            background-color: #fff3cd;
+            border: 1px solid #ffeeba;
+            color: #856404;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px auto;
+            max-width: 900px;
+            display: none;
+        }
+        .cors-warning.show {
+            display: block;
+        }
+        .cors-warning h3 {
+            color: #856404;
+            margin-bottom: 10px;
+        }
+        .cors-warning ol {
+            margin-left: 20px;
+            margin-bottom: 10px;
+        }
+        .cors-warning a {
+            color: #004b5c;
+            font-weight: bold;
+        }
+        .btn-cors {
+            background-color: #004b5c;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .btn-cors:hover {
+            background-color: #003a47;
+        }
     </style>
 </head>
 <body>
@@ -129,6 +168,22 @@
                 <button class="tab-btn" onclick="switchTab(2)">Check-out</button>
             </div>
             <div class="pega-container" id="pega-container"></div>
+            
+            <!-- Aviso CORS -->
+            <div class="cors-warning" id="corsWarning">
+                <h3>⚠️ Erro de CORS Detectado</h3>
+                <p>O servidor Pega está bloqueando as requisições. Para testes, você pode:</p>
+                <ol>
+                    <li><strong>Instalar uma extensão CORS no Chrome:</strong> 
+                        <a href="https://chrome.google.com/webstore/detail/cors-unblock/lfhmikememgdcahcdlaciloimbjjbofh" target="_blank">CORS Unblock</a>
+                    </li>
+                    <li><strong>Ativar a extensão</strong> (ícone fica verde)</li>
+                    <li><strong>Recarregar a página</strong> (F5)</li>
+                </ol>
+                <p>Alternativa: <strong>Firefox</strong> com extensão "CORS Everywhere"</p>
+                <button class="btn-cors" onclick="checkCORS()">Verificar novamente</button>
+                <button class="btn-cors" onclick="this.parentElement.style.display='none'" style="background-color: #6c757d;">Fechar</button>
+            </div>
         </div>
     </section>
 
@@ -242,7 +297,7 @@
         </div>
     </footer>
 
-    <!-- Usando o servidor Vercel como proxy -->
+    <!-- Scripts -->
     <script src="https://pega-proxy.vercel.app/prweb/PRRestService/c11nsvc/v1/pega-embed.js"></script>
     <script>
         var tabs = [
@@ -260,6 +315,8 @@
             }
         ];
 
+        let corsErrorDetected = false;
+
         function switchTab(index) {
             document.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); });
             document.querySelectorAll('.tab-btn')[index].classList.add('active');
@@ -275,36 +332,46 @@
             el.setAttribute('casePage', 'assignment');
             el.setAttribute('assignmentHeader', 'false');
             el.setAttribute('appAlias', 'aviva--experincia-do-hspede-1');
-            // Usando o proxy Vercel
             el.setAttribute('pegaServerUrl', 'https://pega-proxy.vercel.app/prweb/');
             el.setAttribute('grantType', 'customBearer');
             el.setAttribute('clientId', tabs[index].clientId);
-            
-            // Configurações adicionais para CORS
             el.setAttribute('withCredentials', 'false');
-            
             el.style.width = '100%';
+            
+            // Adicionar handler para erro
+            el.addEventListener('error', function(e) {
+                console.error('Erro no Pega Embed:', e);
+                corsErrorDetected = true;
+                document.getElementById('corsWarning').classList.add('show');
+            });
+            
             container.appendChild(el);
             
-            console.log('Tentando carregar:', tabs[index].caseTypeID);
+            // Timer para verificar se carregou
+            setTimeout(function() {
+                if (container.children.length > 0 && container.innerHTML.includes('erro')) {
+                    corsErrorDetected = true;
+                    document.getElementById('corsWarning').classList.add('show');
+                }
+            }, 3000);
         }
+
+        function checkCORS() {
+            location.reload();
+        }
+
+        // Detectar erros globais
+        window.addEventListener('error', function(e) {
+            if (e.message.includes('CORS') || e.message.includes('blocked')) {
+                corsErrorDetected = true;
+                document.getElementById('corsWarning').classList.add('show');
+            }
+        });
 
         window.addEventListener('DOMContentLoaded', function() { 
             switchTab(0); 
         });
     </script>
-
-    <!-- Mensagem de ajuda -->
-    <div style="position: fixed; bottom: 20px; right: 20px; background: #004b5c; color: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.2); z-index: 1000; max-width: 300px;">
-        <p style="margin-bottom: 10px;"><strong>🔧 Diagnóstico</strong></p>
-        <p style="font-size: 14px; margin-bottom: 10px;">Se as telas não aparecerem, verifique:</p>
-        <ul style="font-size: 12px; margin-left: 20px;">
-            <li>O arquivo .nojekyll existe no repositório</li>
-            <li>O proxy Vercel está configurado com vercel.json</li>
-            <li>URL do proxy: https://pega-proxy.vercel.app</li>
-        </ul>
-        <button onclick="this.parentElement.style.display='none'" style="position: absolute; top: 5px; right: 5px; background: none; border: none; color: white; cursor: pointer; font-size: 16px;">×</button>
-    </div>
 
 </body>
 </html>
