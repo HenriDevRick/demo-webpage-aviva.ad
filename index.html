@@ -242,8 +242,8 @@
         </div>
     </footer>
 
-    <!-- Usando o servidor Vercel -->
-    <script src="https://pega-proxy.vercel.app/prweb/PRRestService/c11nsvc/v1/pega-embed.js"></script>
+    <!-- Script principal do Pega Embed - servidor original -->
+    <script src="https://adqura02.pegalabs.io/prweb/PRRestService/c11nsvc/v1/pega-embed.js"></script>
     <script>
         var tabs = [
             {
@@ -261,12 +261,15 @@
         ];
 
         function switchTab(index) {
+            // Atualizar botões ativos
             document.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); });
             document.querySelectorAll('.tab-btn')[index].classList.add('active');
 
+            // Limpar container
             var container = document.getElementById('pega-container');
             container.innerHTML = '';
 
+            // Criar novo elemento pega-embed
             var el = document.createElement('pega-embed');
             el.setAttribute('id', 'theEmbed');
             el.setAttribute('action', 'createCase');
@@ -275,15 +278,21 @@
             el.setAttribute('casePage', 'assignment');
             el.setAttribute('assignmentHeader', 'false');
             el.setAttribute('appAlias', 'aviva--experincia-do-hspede-1');
-            // Usando o servidor Vercel
-            el.setAttribute('pegaServerUrl', 'https://pega-proxy.vercel.app/prweb/');
+            // Usando o servidor original
+            el.setAttribute('pegaServerUrl', 'https://adqura02.pegalabs.io/prweb/');
             el.setAttribute('grantType', 'customBearer');
             el.setAttribute('clientId', tabs[index].clientId);
             el.style.width = '100%';
+            
             container.appendChild(el);
+            
+            console.log('Web embed carregado para:', tabs[index].caseTypeID);
         }
 
-        window.addEventListener('DOMContentLoaded', function() { switchTab(0); });
+        // Carregar a primeira aba quando a página carregar
+        window.addEventListener('DOMContentLoaded', function() { 
+            switchTab(0); 
+        });
     </script>
 
 </body>
