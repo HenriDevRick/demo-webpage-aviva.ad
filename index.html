@@ -8,7 +8,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Mesmo CSS de antes */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Poppins', sans-serif; color: #004b5c; line-height: 1.6; }
         h1,h2,h3,h4,h5,h6 { font-family: 'Playfair Display', serif; font-weight: 700; }
@@ -91,100 +90,174 @@
             .tabs-container { flex-direction: column; }
             .tab-btn { width: 100%; }
         }
+
+        .cors-info {
+            background-color: #e7f3ff;
+            border: 1px solid #b8daff;
+            color: #004085;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px auto;
+            max-width: 900px;
+        }
+        .btn-cors {
+            background-color: #004b5c;
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .btn-cors:hover {
+            background-color: #003a47;
+        }
     </style>
 </head>
 <body>
-    <header>...</header>
-    <section class="hero">...</section>
-    
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">
+                    <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310419663030535648/kjcChvtIhqfiojcv.png" alt="Aviva Resorts" class="logo-img">
+                </a>
+                <nav>
+                    <a href="#reserva">Autoatendimento</a>
+                    <a href="#destinos">Destinos</a>
+                    <a href="#experiencias">Experiências</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Multiplicando Maneiras de Fazer Você Feliz</h1>
+            <p>Experiências inesquecíveis em resorts de luxo integrados à natureza brasileira</p>
+            <a href="#reserva" class="btn">Reserve Agora</a>
+        </div>
+    </section>
+
     <section class="tabs-section" id="reserva">
         <div class="container">
             <h2 class="section-title">Autoatendimento</h2>
+            
+            <!-- Instruções CORS -->
+            <div class="cors-info" id="corsInstructions">
+                <h3>🔧 Configuração necessária para testes</h3>
+                <p>O servidor Pega requer uma extensão CORS no navegador. Siga os passos:</p>
+                <ol>
+                    <li><strong>Instale a extensão "CORS Unblock" no Chrome:</strong> 
+                        <a href="https://chrome.google.com/webstore/detail/cors-unblock/lfhmikememgdcahcdlaciloimbjjbofh" target="_blank">Clique aqui para instalar</a>
+                    </li>
+                    <li><strong>Ative a extensão</strong> (ícone fica verde)</li>
+                    <li><strong>Recarregue esta página</strong> (F5)</li>
+                </ol>
+                <p><small>Alternativa: Use Firefox com extensão "CORS Everywhere"</small></p>
+                <button class="btn-cors" onclick="document.getElementById('corsInstructions').style.display='none'">OK, entendi</button>
+            </div>
+            
             <div class="tabs-container">
                 <button class="tab-btn active" onclick="switchTab(0)">Confirmação de Reserva</button>
                 <button class="tab-btn" onclick="switchTab(1)">Check-in</button>
                 <button class="tab-btn" onclick="switchTab(2)">Check-out</button>
             </div>
             <div class="pega-container" id="pega-container"></div>
-            
-            <!-- Aviso de diagnóstico -->
-            <div style="margin-top: 20px; padding: 15px; background: #f0f0f0; border-radius: 8px;">
-                <h3>🔧 Diagnóstico</h3>
-                <p>Teste os links abaixo no navegador:</p>
-                <ul>
-                    <li><a href="https://pega-proxy.vercel.app/prweb/PRRestService/c11nsvc/v1/pega-embed.js" target="_blank">Testar Proxy Vercel</a></li>
-                    <li><a href="https://adqura02.pegalabs.io/prweb/PRRestService/c11nsvc/v1/pega-embed.js" target="_blank">Testar Servidor Direto</a></li>
-                </ul>
+        </div>
+    </section>
+
+    <section class="destinos" id="destinos">
+        <div class="container">
+            <h2 class="section-title">Nossos Destinos</h2>
+            <div class="destinos-grid">
+                <div class="card">
+                    <img src="https://private-us-east-1.manuscdn.com/sessionFile/MJbIllU8XkkduAFoEBZFB3/sandbox/YnijnZb1YqlBwd0wHWkjdu-img-2_1771957477000_na1fn_YXZpdmEtaG90LXNwcmluZw.png?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80&Expires=1798761600&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvTUpiSWxsVThYa2tkdUFGb0VCWkZCMy9zYW5kYm94L1luaWpuWmIxWXFsQndkMHdIV2tqZHUtaW1nLTJfMTc3MTk1NzQ3NzAwMF9uYTFmbl9ZWFpwZG1FdGFHOTBMWE53Y21sdVp3LnBuZz94LW9zcy1wcm9jZXNzPWltYWdlL3Jlc2l6ZSx3XzE5MjAsaF8xOTIwL2Zvcm1hdCx3ZWJwL3F1YWxpdHkscV84MCIsIkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc5ODc2MTYwMH19fV19&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=AG-hSsjezsnNA1D-rF7R~X7Z30pCvKn1uc7Fx1KeWS9vqTpxaCGsoEZJRDy2Nb~qZyopZTITebHZ~xi0FSmHyPQxP5eIPnc6nD3gXXLxVsOG~dCwOtFCCAgp-BP-U8wIeN2B04OrnbayYDPJP1qAw~9hBwCp2Aa~JR0z5lbmLBPo1HonLddsYnKkH5EasZ54TuRCW1xQkkH3sXeNTWjQx-LbfUFq9xHPiAfSMbkDJuY9apc2I7cIo1oQmnZiOOKGB9hYwDU3aSp6ySt0wSQvjVlVU3KFJO4YzxRjEWXTC-yQmHirBxGllN2S3QVrLlPMO9BgnUt2PJm-7NjdCfU~ow__" alt="Rio Quente">
+                    <div class="card-content">
+                        <h3>Rio Quente Resorts</h3>
+                        <p>Águas termais naturais, piscinas aquecidas e o famoso Hot Park. Um paraíso de lazer e bem-estar em Goiás.</p>
+                        <button class="btn">Explorar</button>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://private-us-east-1.manuscdn.com/sessionFile/MJbIllU8XkkduAFoEBZFB3/sandbox/YnijnZb1YqlBwd0wHWkjdu-img-4_1771957499000_na1fn_YXZpdmEtcmVzb3J0LWFlcmlhbA.png?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80&Expires=1798761600&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvTUpiSWxsVThYa2tkdUFGb0VCWkZCMy9zYW5kYm94L1luaWpuWmIxWXFsQndkMHdIV2tqZHUtaW1nLTRfMTc3MTk1NzQ5OTAwMF9uYTFmbl9ZWFpwZG1FdGNtVnpiM0owTFdGbGNtbGhiQS5wbmc~eC1vc3MtcHJvY2Vzcz1pbWFnZS9yZXNpemUsd18xOTIwLGhfMTkyMC9mb3JtYXQsd2VicC9xdWFsaXR5LHFfODAiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE3OTg3NjE2MDB9fX1dfQ__&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=RONjJ5EtMM1ZQb8B-Wk-3-h3VzB5YOdtUiApig7dk44rCxcDyUj~46ILqEX08L0rIZ0-aTRZUGseDnGbP6uy5xpk61iFTX3Jp0igrX-QsU~8NSEnI3cKUqwacu9CUbaLEp5zUQ8fQ2o2h4NYHSTXsbT1RPo2TZg3Kzs-Mlhv9Xj-ccCOjLCSbySyLZ77cnPb6lMlHzgromc7KAOiCWQptqKvWhHft~rr90QTydjDGmzmUKg1MJavTHd8fi1HG14N9LV6rciSukpdrLN~FyLlvw03ITZsXnmnGTieBW~BjLxtDQpOrUayD4saQZLO7o2IRWVi9TEhD6Dw4m-oUMOXWw__" alt="Costa do Sauipe">
+                    <div class="card-content">
+                        <h3>Costa do Sauípe</h3>
+                        <p>Praia paradisíaca na Bahia com resorts all-inclusive, natureza exuberante e experiências inesquecíveis.</p>
+                        <button class="btn">Explorar</button>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <section class="destinos">...</section>
-    <section class="experiencias">...</section>
-    <section class="cta">...</section>
-    <footer>...</footer>
+    <section class="experiencias" id="experiencias">
+        <div class="container">
+            <h2 class="section-title">Experiências Incríveis</h2>
+            <div class="experiencias-grid">
+                <div class="exp-card"><div class="exp-icon">🏊</div><h4>Piscinas Aquecidas</h4><p>Águas termais naturais e piscinas de luxo</p></div>
+                <div class="exp-card"><div class="exp-icon">🎢</div><h4>Hot Park</h4><p>Parque aquático com toboáguas e atrações</p></div>
+                <div class="exp-card"><div class="exp-icon">🍽️</div><h4>Gastronomia</h4><p>Restaurantes com culinária internacional</p></div>
+                <div class="exp-card"><div class="exp-icon">🧘</div><h4>Bem-estar</h4><p>Spa e tratamentos rejuvenescedores</p></div>
+                <div class="exp-card"><div class="exp-icon">👨‍👩‍👧‍👦</div><h4>Diversão em Família</h4><p>Atividades para todas as idades</p></div>
+                <div class="exp-card"><div class="exp-icon">🌿</div><h4>Natureza</h4><p>Integração com paisagem natural preservada</p></div>
+            </div>
+        </div>
+    </section>
 
-    <!-- Script com fallback -->
+    <section class="cta">
+        <div class="container">
+            <h3>Pronto para a Aventura?</h3>
+            <p>Escolha um dos nossos serviços acima e comece sua experiência na Aviva Resorts</p>
+            <a href="#reserva" class="btn">Acessar Serviços</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section"><h4>Aviva Resorts</h4><p>Multiplicando maneiras de fazer você feliz</p></div>
+                <div class="footer-section"><h4>Destinos</h4><ul><li><a href="#">Rio Quente</a></li><li><a href="#">Costa do Sauípe</a></li><li><a href="#">Hot Park</a></li></ul></div>
+                <div class="footer-section"><h4>Contato</h4><p>📞 0800 000 0000</p><p>✉️ contato@aviva.com.br</p><p>🌐 www.aviva.com.br</p></div>
+                <div class="footer-section"><h4>Redes Sociais</h4><ul><li><a href="#">Instagram</a></li><li><a href="#">Facebook</a></li><li><a href="#">YouTube</a></li></ul></div>
+            </div>
+            <div class="footer-bottom"><p>&copy; 2026 Aviva Resorts. Todos os direitos reservados.</p></div>
+        </div>
+    </footer>
+
+    <!-- Script usando servidor direto -->
+    <script src="https://adqura02.pegalabs.io/prweb/PRRestService/c11nsvc/v1/pega-embed.js"></script>
     <script>
-        // Tentar carregar do proxy Vercel primeiro
-        var script = document.createElement('script');
-        script.src = 'https://pega-proxy.vercel.app/prweb/PRRestService/c11nsvc/v1/pega-embed.js';
-        script.onerror = function() {
-            console.error('Proxy Vercel falhou, tentando servidor direto...');
-            // Se falhar, tenta o servidor direto
-            var script2 = document.createElement('script');
-            script2.src = 'https://adqura02.pegalabs.io/prweb/PRRestService/c11nsvc/v1/pega-embed.js';
-            document.head.appendChild(script2);
-            
-            script2.onload = function() {
-                console.log('Script carregado do servidor direto');
-                initPegaEmbed();
-            };
+        var tabs = [
+            { caseTypeID: 'Aviva-Experience-Work-BookingConfirmation', clientId: '12444249209306947994' },
+            { caseTypeID: 'Aviva-Experience-Work-CheckinDigital', clientId: '55966357118681751596' },
+            { caseTypeID: 'Aviva-Experience-Work-CheckoutDigital', clientId: '13673903982745833564' }
+        ];
+
+        window.switchTab = function(index) {
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.tab-btn')[index].classList.add('active');
+
+            var container = document.getElementById('pega-container');
+            container.innerHTML = '';
+
+            var el = document.createElement('pega-embed');
+            el.setAttribute('id', 'theEmbed');
+            el.setAttribute('action', 'createCase');
+            el.setAttribute('caseTypeID', tabs[index].caseTypeID);
+            el.setAttribute('themeID', 'pzCosmosDefault');
+            el.setAttribute('casePage', 'assignment');
+            el.setAttribute('assignmentHeader', 'false');
+            el.setAttribute('appAlias', 'aviva--experincia-do-hspede-1');
+            el.setAttribute('pegaServerUrl', 'https://adqura02.pegalabs.io/prweb/');
+            el.setAttribute('grantType', 'customBearer');
+            el.setAttribute('clientId', tabs[index].clientId);
+            el.style.width = '100%';
+            container.appendChild(el);
         };
-        script.onload = function() {
-            console.log('Script carregado do proxy Vercel');
-            initPegaEmbed();
-        };
-        document.head.appendChild(script);
 
-        function initPegaEmbed() {
-            var tabs = [
-                { caseTypeID: 'Aviva-Experience-Work-BookingConfirmation', clientId: '12444249209306947994' },
-                { caseTypeID: 'Aviva-Experience-Work-CheckinDigital', clientId: '55966357118681751596' },
-                { caseTypeID: 'Aviva-Experience-Work-CheckoutDigital', clientId: '13673903982745833564' }
-            ];
-
-            window.switchTab = function(index) {
-                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-                document.querySelectorAll('.tab-btn')[index].classList.add('active');
-
-                var container = document.getElementById('pega-container');
-                container.innerHTML = '';
-
-                var el = document.createElement('pega-embed');
-                el.setAttribute('id', 'theEmbed');
-                el.setAttribute('action', 'createCase');
-                el.setAttribute('caseTypeID', tabs[index].caseTypeID);
-                el.setAttribute('themeID', 'pzCosmosDefault');
-                el.setAttribute('casePage', 'assignment');
-                el.setAttribute('assignmentHeader', 'false');
-                el.setAttribute('appAlias', 'aviva--experincia-do-hspede-1');
-                
-                // Tenta proxy, se falhar usa direto
-                if (typeof window.USAR_PROXY !== 'undefined' && window.USAR_PROXY === false) {
-                    el.setAttribute('pegaServerUrl', 'https://adqura02.pegalabs.io/prweb/');
-                } else {
-                    el.setAttribute('pegaServerUrl', 'https://pega-proxy.vercel.app/prweb/');
-                }
-                
-                el.setAttribute('grantType', 'customBearer');
-                el.setAttribute('clientId', tabs[index].clientId);
-                el.style.width = '100%';
-                container.appendChild(el);
-            };
-
-            window.switchTab(0);
-        }
+        window.switchTab(0);
     </script>
 </body>
 </html>
