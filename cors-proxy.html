@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Aviva Resorts - CORS Proxy</title>
+</head>
+<body>
+    <script>
+        // Este arquivo serve como um proxy CORS para o Pega Embed
+        // Ele será carregado em um iframe para contornar as restrições CORS
+        
+        // Configurar mensagens entre iframes
+        window.addEventListener('message', function(event) {
+            if (event.data.type === 'PEGA_EMBED_REQUEST') {
+                // Encaminhar requisições para o servidor Pega
+                fetch('https://req.wap.pagesdemo.com/prweb/' + event.data.path, {
+                    method: event.data.method,
+                    headers: event.data.headers,
+                    body: event.data.body
+                })
+                .then(response => response.text())
+                .then(data => {
+                    event.source.postMessage({
+                        type: 'PEGA_EMBED_RESPONSE',
+                        id: event.data.id,
+                        data: data
+                    }, '*');
+                })
+                .catch(error => {
+                    event.source.postMessage({
+                        type: 'PEGA_EMBED_ERROR',
+                        id: event.data.id,
+                        error: error.message
+                    }, '*');
+                });
+            }
+        });
+    </script>
+</body>
+</html>
