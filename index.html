@@ -75,7 +75,6 @@
 </head>
 <body>
 
-    <!-- Header -->
     <header>
         <div class="container">
             <div class="header-content">
@@ -91,7 +90,6 @@
         </div>
     </header>
 
-    <!-- Hero -->
     <section class="hero">
         <div class="hero-content">
             <h1>Multiplicando Maneiras de Fazer Você Feliz</h1>
@@ -100,7 +98,6 @@
         </div>
     </section>
 
-    <!-- Autoatendimento -->
     <section class="tabs-section" id="reserva">
         <div class="container">
             <h2 class="section-title">Autoatendimento</h2>
@@ -113,7 +110,6 @@
         </div>
     </section>
 
-    <!-- Destinos -->
     <section class="destinos" id="destinos">
         <div class="container">
             <h2 class="section-title">Nossos Destinos</h2>
@@ -138,7 +134,6 @@
         </div>
     </section>
 
-    <!-- Experiencias -->
     <section class="experiencias" id="experiencias">
         <div class="container">
             <h2 class="section-title">Experiências Incríveis</h2>
@@ -153,7 +148,6 @@
         </div>
     </section>
 
-    <!-- CTA -->
     <section class="cta">
         <div class="container">
             <h3>Pronto para a Aventura?</h3>
@@ -162,7 +156,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-grid">
@@ -175,16 +168,8 @@
         </div>
     </footer>
 
+    <script src='https://adqura02.pegalabs.io/prweb/PRRestService/c11nsvc/v1/pega-embed.js'></script>
     <script>
-        // Detecta ambiente: local usa localhost:8000, qualquer outra origem usa o servidor Pega real
-        var isLocal = (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1");
-        var PEGA_SERVER = isLocal ? "http://localhost:8000/prweb/" : "https://reguv.pegatsdemo.com/prweb/";
-
-        // Injeta o pega-embed.js dinamicamente com a URL correta do ambiente
-        var s = document.createElement("script");
-        s.src = PEGA_SERVER + "PRRestService/c11nsvc/v1/pega-embed.js";
-        document.head.appendChild(s);
-
         var tabs = [
             { caseTypeID: "Aviva-Experience-Work-BookingConfirmation", clientId: "12444249209306947994" },
             { caseTypeID: "Aviva-Experience-Work-CheckinDigital",      clientId: "55966357118681751596" },
@@ -204,7 +189,7 @@
             el.setAttribute("casePage", "assignment");
             el.setAttribute("assignmentHeader", "false");
             el.setAttribute("appAlias", "aviva--experincia-do-hspede-1");
-            el.setAttribute("pegaServerUrl", PEGA_SERVER);
+            el.setAttribute("pegaServerUrl", "https://adqura02.pegalabs.io/prweb/");
             el.setAttribute("grantType", "customBearer");
             el.setAttribute("clientId", tabs[index].clientId);
             el.style.width = "100%";
