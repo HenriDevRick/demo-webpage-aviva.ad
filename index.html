@@ -31,8 +31,8 @@
         .hero-content p  { font-size: 16px; margin-bottom: 20px; text-shadow: 1px 1px 2px rgba(0,0,0,0.3); }
 
         .btn { display: inline-block; padding: 15px 40px; background-color: #c6d900; color: #004b5c;
-                text-decoration: none; border-radius: 8px; font-weight: 600; transition: all 0.3s;
-                border: none; cursor: pointer; font-size: 16px; }
+               text-decoration: none; border-radius: 8px; font-weight: 600; transition: all 0.3s;
+               border: none; cursor: pointer; font-size: 16px; }
         .btn:hover { background-color: #b8c800; box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
 
         .tabs-section { background-color: white; padding: 80px 0; }
@@ -93,6 +93,8 @@
     </style>
 </head>
 <body>
+
+    <!-- Header -->
     <header>
         <div class="container">
             <div class="header-content">
@@ -108,6 +110,7 @@
         </div>
     </header>
 
+    <!-- Hero -->
     <section class="hero">
         <div class="hero-content">
             <h1>Multiplicando Maneiras de Fazer Você Feliz</h1>
@@ -116,10 +119,10 @@
         </div>
     </section>
 
+    <!-- Autoatendimento -->
     <section class="tabs-section" id="reserva">
         <div class="container">
             <h2 class="section-title">Autoatendimento</h2>
-            
             <div class="tabs-container">
                 <button class="tab-btn active" onclick="switchTab(0)">Confirmação de Reserva</button>
                 <button class="tab-btn" onclick="switchTab(1)">Check-in</button>
@@ -129,6 +132,7 @@
         </div>
     </section>
 
+    <!-- Destinos -->
     <section class="destinos" id="destinos">
         <div class="container">
             <h2 class="section-title">Nossos Destinos</h2>
@@ -153,20 +157,46 @@
         </div>
     </section>
 
+    <!-- Experiencias -->
     <section class="experiencias" id="experiencias">
         <div class="container">
             <h2 class="section-title">Experiências Incríveis</h2>
             <div class="experiencias-grid">
-                <div class="exp-card"><div class="exp-icon">🏊</div><h4>Piscinas Aquecidas</h4><p>Águas termais naturais e piscinas de luxo</p></div>
-                <div class="exp-card"><div class="exp-icon">🎢</div><h4>Hot Park</h4><p>Parque aquático com toboáguas e atrações</p></div>
-                <div class="exp-card"><div class="exp-icon">🍽️</div><h4>Gastronomia</h4><p>Restaurantes com culinária internacional</p></div>
-                <div class="exp-card"><div class="exp-icon">🧘</div><h4>Bem-estar</h4><p>Spa e tratamentos rejuvenescedores</p></div>
-                <div class="exp-card"><div class="exp-icon">👨‍👩‍👧‍👦</div><h4>Diversão em Família</h4><p>Atividades para todas as idades</p></div>
-                <div class="exp-card"><div class="exp-icon">🌿</div><h4>Natureza</h4><p>Integração com paisagem natural preservada</p></div>
+                <div class="exp-card">
+                    <div class="exp-icon">🏊</div>
+                    <h4>Piscinas Aquecidas</h4>
+                    <p>Águas termais naturais e piscinas de luxo</p>
+                </div>
+                <div class="exp-card">
+                    <div class="exp-icon">🎢</div>
+                    <h4>Hot Park</h4>
+                    <p>Parque aquático com toboáguas e atrações</p>
+                </div>
+                <div class="exp-card">
+                    <div class="exp-icon">🍽️</div>
+                    <h4>Gastronomia</h4>
+                    <p>Restaurantes com culinária internacional</p>
+                </div>
+                <div class="exp-card">
+                    <div class="exp-icon">🧘</div>
+                    <h4>Bem-estar</h4>
+                    <p>Spa e tratamentos rejuvenescedores</p>
+                </div>
+                <div class="exp-card">
+                    <div class="exp-icon">👨‍👩‍👧‍👦</div>
+                    <h4>Diversão em Família</h4>
+                    <p>Atividades para todas as idades</p>
+                </div>
+                <div class="exp-card">
+                    <div class="exp-icon">🌿</div>
+                    <h4>Natureza</h4>
+                    <p>Integração com paisagem natural preservada</p>
+                </div>
             </div>
         </div>
     </section>
 
+    <!-- CTA -->
     <section class="cta">
         <div class="container">
             <h3>Pronto para a Aventura?</h3>
@@ -175,34 +205,45 @@
         </div>
     </section>
 
+    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-grid">
-                <div class="footer-section"><h4>Aviva Resorts</h4><p>Multiplicando maneiras de fazer você feliz</p></div>
-                <div class="footer-section"><h4>Destinos</h4><ul><li><a href="#">Rio Quente</a></li><li><a href="#">Costa do Sauípe</a></li><li><a href="#">Hot Park</a></li></ul></div>
-                <div class="footer-section"><h4>Contato</h4><p>📞 0800 000 0000</p><p>✉️ <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="dfbcb0b1abbeabb09fbea9b6a9bef1bcb0b2f1bdad">[email&#160;protected]</a></p><p>🌐 www.aviva.com.br</p></div>
-                <div class="footer-section"><h4>Redes Sociais</h4><ul><li><a href="#">Instagram</a></li><li><a href="#">Facebook</a></li><li><a href="#">YouTube</a></li></ul></div>
+                <div class="footer-section">
+                    <h4>Aviva Resorts</h4>
+                    <p>Multiplicando maneiras de fazer você feliz</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Destinos</h4>
+                    <ul>
+                        <li><a href="#">Rio Quente</a></li>
+                        <li><a href="#">Costa do Sauípe</a></li>
+                        <li><a href="#">Hot Park</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contato</h4>
+                    <p>📞 0800 000 0000</p>
+                    <p>✉️ contato@aviva.com.br</p>
+                    <p>🌐 www.aviva.com.br</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Redes Sociais</h4>
+                    <ul>
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">YouTube</a></li>
+                    </ul>
+                </div>
             </div>
-            <div class="footer-bottom"><p>&copy; 2026 Aviva Resorts. Todos os direitos reservados.</p></div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Aviva Resorts. Todos os direitos reservados.</p>
+            </div>
         </div>
     </footer>
 
-    <!--
-    =====================================================================
-    ⚙️ CONFIGURAÇÃO DO PROXY
-    Substitua TODAS as ocorrências de:
-        https://demo-webpage-aviv-av3.henri-limas-200.workers.dev
-    pela URL real do seu Cloudflare Worker após o deploy.
-    =====================================================================
-    -->
-
-    <!-- ✅ Script carregado via proxy (resolve CORS) -->
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://demo-webpage-aviv-av3.henri-limas-200.workers.dev/prweb/PRRestService/c11nsvc/v1/pega-embed.js"></script>
-
+    <script src='https://reguv.pegatsdemo.com/prweb/PRRestService/c11nsvc/v1/pega-embed.js'></script>
     <script>
-        // URL do Cloudflare Worker — altere aqui quando tiver a URL real
-        var PROXY_URL = 'https://demo-webpage-aviv-av3.henri-limas-200.workers.dev';
-
         var tabs = [
             {
                 caseTypeID: 'Aviva-Experience-Work-BookingConfirmation',
@@ -218,8 +259,8 @@
             }
         ];
 
-        window.switchTab = function(index) {
-            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        function switchTab(index) {
+            document.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); });
             document.querySelectorAll('.tab-btn')[index].classList.add('active');
 
             var container = document.getElementById('pega-container');
@@ -233,8 +274,15 @@
             el.setAttribute('casePage', 'assignment');
             el.setAttribute('assignmentHeader', 'false');
             el.setAttribute('appAlias', 'aviva--experincia-do-hspede-1');
+            el.setAttribute('pegaServerUrl', 'https://reguv.pegatsdemo.com/prweb/');
+            el.setAttribute('grantType', 'customBearer');
+            el.setAttribute('clientId', tabs[index].clientId);
+            el.style.width = '100%';
+            container.appendChild(el);
+        }
 
-            // ✅ Aponta para o proxy em vez do servidor Pega diretamente
-            el.setAttribute('pegaServerUrl', PROXY_URL + '/prweb/');
+        window.addEventListener('DOMContentLoaded', function() { switchTab(0); });
+    </script>
 
-            el.setAttribute('grantTyp
+</body>
+</html>
